@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sanctum TV Story</title>
+<link href="https://fonts.googleapis.com/css2?family=Sixtyfour&display=swap" rel="stylesheet">
+<style>
+:root{
+    --glow-color: #00ff00;
+}
+body {
+    margin: 0;
+    padding: 0;
+    background: #000;
+    font-family: 'Sixtyfour', monospace;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--glow-color);
+}
+#sanctumImage {
+    margin-top: 40px;
+    margin-bottom: 100px;
+    max-width: 300px;
+    animation: breath 2s infinite;
+}
+@keyframes breath {
+    0%, 100% { filter: drop-shadow(0 0 16px var(--glow-color)) drop-shadow(0 0 32px var(--glow-color)); }
+    50% { filter: drop-shadow(0 0 32px var(--glow-color)) drop-shadow(0 0 64px var(--glow-color)); }
+}
+h1 {
+    margin: 40px 0 20px 0;
+    text-shadow: 0 0 8px var(--glow-color), 0 0 16px var(--glow-color);
+    font-size: 32px;
+}
+#tvScreen {
+    width: 90%;
+    max-width: 800px;
+    height: 250px;
+    background: #000;
+    border: 2px solid var(--glow-color);
+    box-shadow: 0 0 16px var(--glow-color), 0 0 32px var(--glow-color) inset;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36px;
+    text-align: center;
+}
+.word {
+    opacity: 0;
+    transition: opacity 0.05s linear;
+}
+</style>
+</head>
+<body>
+
+<img id="sanctumImage" src="sanctum.png" alt="Sanctum">
+<h1>Website Work in Progress</h1>
+<div id="tvScreen"><span id="currentWord"></span></div>
+
+<script>
+const currentWord = document.getElementById('currentWord');
+
+const story = `
+
+No lube, no protection, all night all day from the kitchen floor to the dining table from the bed to church, from the front porch to the balcony, vertically, horizontally, quadratic exponential, logarithmic, while i gasp for air scream the lord's prayer, SEIJI CAN TOP ME until I'm swollen, until I'm crying, until he's out of juice, until I cant walk, until I'm numb, until my throat hurts, until my cheeks are red, until the neighbours know his name, until my insides becomes outsides, until my hole remember the shape, until my jaws fall off, until my leg is useless, until my eyes are rolled back and it stays there, until my body does a backflip, until my whole body shakes, until the skin peels off, until my bones disconnect, until i pass out, until im paralyzed for the rest of my life, until all my eggs are fertilized, until all my holes are filled, until i cant breathe, until it gets longer than before, until he couldn't stand, until i die, until his tentacles dont come anymore, until my mouth cant eat, until i remember the length of it, until the end of time, until he dont have it anymore, until his hole remembers the size and girth, until it reaches my stomach, until hes grunting and growling, until he has to regenerate it, until the whole world hears. I'm gonna get him pregnant ten times over breeding him all day all night no protection just me and him all over the house on the floor on the couch on the bed in the shower on the rooftops even god couldn't pull me out of him. 
+`;
+
+const words = story.trim().split(/\s+/);
+let index = 0;
+
+function showNextWord() {
+    if(index >= words.length) index = 0; 
+    currentWord.textContent = words[index];
+    currentWord.style.opacity = 0;
+    setTimeout(()=>{ currentWord.style.opacity = 1; }, 20); 
+    index++;
+    setTimeout(showNextWord, 100); 
+}
+
+showNextWord();
+</script>
+
+</body>
+</html>
